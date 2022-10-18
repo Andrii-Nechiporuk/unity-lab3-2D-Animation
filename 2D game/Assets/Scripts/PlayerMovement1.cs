@@ -84,6 +84,12 @@ public class PlayerMovement1 : MonoBehaviour
                 isJumping = false;
                 animator.SetBool("IsJumping", false);
             }
+            if (collision.gameObject.CompareTag("Platform"))
+            {
+                isJumping = false;
+                animator.SetBool("IsJumping", false);
+                rbody.transform.parent = collision.gameObject.transform;
+            }
         }
     }
 
@@ -93,6 +99,11 @@ public class PlayerMovement1 : MonoBehaviour
             if (collision.gameObject.CompareTag("Ground"))
             {
                 isJumping = true;
+            }
+            if (collision.gameObject.CompareTag("Platform"))
+            {
+                isJumping = true;
+                rbody.transform.parent = null;
             }
         }
     }
